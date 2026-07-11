@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>FB Unsaver</title>
+</head>
+<body>
+  <main class="app" id="app">
+    <header class="head">
+      <span class="mark" aria-hidden="true">
+        <img src="images/icon128.png" alt="FB Unsaver Logo" width="20" height="20" />
+      </span>
+      <div class="wordmark">
+        <strong>FB Unsaver</strong>
+        <span>Clear your saved items</span>
+      </div>
+      <span class="live" id="live" hidden>Live</span>
+    </header>
+
+    <section class="stage" id="stage">
+      <p class="eyebrow" id="eyebrow">Cleared this run</p>
+      <div class="count" id="count">0</div>
+      <div class="total-saved" id="totalSaved" hidden></div>
+      <div class="sweep" id="sweep" data-active="false"><i></i></div>
+      <p class="status" id="status">Ready when you are.</p>
+    </section>
+
+    <section class="offsite" id="offsite" hidden>
+      <p class="offsite-title">Open your Saved page first</p>
+      <p class="offsite-body">FB Unsaver works on your Facebook saved items and collections.</p>
+    </section>
+
+    <div class="controls" id="controls">
+      <div class="speed" role="group" aria-label="Cleaning speed">
+        <span class="speed-label">Speed</span>
+        <div class="segs" id="segs">
+          <button class="seg" data-speed="safe" type="button">Safe</button>
+          <button class="seg" data-speed="balanced" type="button">Balanced</button>
+          <button class="seg" data-speed="fast" type="button">Fast</button>
+        </div>
+      </div>
+    </div>
+
+    <button class="cta" id="cta" type="button">Start cleaning</button>
+    <button class="cta open" id="openSaved" type="button" hidden>Open Saved page</button>
+
+    <p class="fineprint" id="fineprint">Unsaved items can’t be restored. You can stop anytime.</p>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

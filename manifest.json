@@ -1,25 +1,28 @@
 {
-    "manifest_version": 3,
-    "name": "FB-Unsaver",
-    "version": "1.0",
-    "description": "Automatically unsave items from Facebook collections.",
-    "permissions": [
-      "activeTab",
-      "scripting"
-    ],
-    "host_permissions": [
-      "*://*.facebook.com/*"
-    ],
-    "background": {
-      "service_worker": "background.js"
-    },
-    "action": {
-      "default_title": "Run FB-Unsaver",
-      "default_icon": {
-        "16": "images/icon16.png",
-        "48": "images/icon48.png",
-        "128": "images/icon128.png"
-      }
+  "manifest_version": 3,
+  "name": "FB Unsaver — Clear Saved Items",
+  "version": "2.0",
+  "description": "Bulk-remove your saved posts, reels and videos from Facebook. One click, live progress, stop anytime.",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.facebook.com/*"
+  ],
+  "action": {
+    "default_title": "FB Unsaver",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
     }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
   }
-  
+}
