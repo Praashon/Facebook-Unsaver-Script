@@ -18,6 +18,7 @@ const el = {
   cta: document.getElementById('cta'),
   openSaved: document.getElementById('openSaved'),
   fineprint: document.getElementById('fineprint'),
+  updateBanner: document.getElementById('updateBanner'),
 };
 
 let speed = 'balanced';
@@ -140,6 +141,35 @@ function setSpeed(next) {
   chrome.storage.local.set({ fbu_speed: next });
 }
 
+async function checkForUpdates() {
+  try {
+    const response = await fetch('https://raw.githubusercontent.com/Praashon/Facebook-Unsaver-Script/main/manifest.json', {
+      cache: 'no-cache'
+    });
+    if (!response.ok) return;
+    const remoteManifest = await response.json();
+    const currentVersion = chrome.runtime.getManifest().version;
+    const remoteVersion = remoteManifest.version;
+    
+    if (remoteVersion && currentVersion !== remoteVersion) {
+      const vCur = currentVersion.split('.').map(Number);
+      const vRem = remoteVersion.split('.').map(Number);
+      let isNewer = false;
+      for (let i = 0; i < Math.max(vCur.length, vRem.length); i++) {
+        const cur = vCur[i] || 0;
+        const rem = vRem[i] || 0;
+        if (rem > cur) { isNewer = true; break; }
+        if (rem < cur) break;
+      }
+      if (isNewer) {
+        el.updateBanner.hidden = false;
+      }
+    }
+  } catch (err) {
+    console.error('Failed to check for updates:', err);
+  }
+}
+
 el.cta.addEventListener('click', () => (running ? stop() : start()));
 el.openSaved.addEventListener('click', openSaved);
 el.segs.addEventListener('click', (e) => {
@@ -155,6 +185,8 @@ chrome.runtime.onMessage.addListener((msg) => {
 });
 
 (async function init() {
+  checkForUpdates();
+
   const stored = await chrome.storage.local.get(['fbu_speed', 'fbu_cleared']);
   setSpeed(stored.fbu_speed || 'balanced');
 

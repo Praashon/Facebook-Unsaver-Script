@@ -129,6 +129,38 @@ body {
 }
 .offsite-title { margin: 0 0 4px; font-weight: 700; }
 .offsite-body { margin: 0; font-size: 12.5px; color: var(--muted); }
+
+.update-banner {
+  background: var(--brand-tint);
+  border: 1px solid var(--brand);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.update-banner span {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--brand-deep);
+}
+.update-banner a {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--brand);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: filter 0.15s ease;
+  white-space: nowrap;
+}
+.update-banner a:hover {
+  filter: brightness(1.05);
+}
+
 .controls { margin: 14px 0 12px; }
 .speed { display: flex; align-items: center; gap: 12px; }
 .speed-label { font-size: 12.5px; color: var(--muted); font-weight: 600; }
@@ -217,4 +249,7 @@ body {
   }
   .seg[aria-pressed="true"] { color: #4fe0b4; }
   .live { color: #4fe0b4; }
+  .update-banner span { color: #4fe0b4; }
+  .update-banner a { color: #14181c; background: #4fe0b4; }
+  .update-banner { border-color: rgba(79, 224, 180, 0.3); }
 }
